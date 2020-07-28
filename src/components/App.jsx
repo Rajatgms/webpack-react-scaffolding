@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-
-const App = () => {
-  const [count, setCount] = useState(0);
+import {number} from 'prop-types'
+const App = (props) => {
+  const [count, setCount] = useState(props.counter);
   return (
     <>
       <div>Hello!!!</div>
@@ -10,5 +10,8 @@ const App = () => {
     </>
   );
 };
+App.propTypes = {
+  counter: number.isRequired
+}
 
 export default App;
