@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
-import { number, func } from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { decrementAction, incrementAsyncAction } from '../actions/counterAction';
 
-const Counter = (props) => {
+const Counter = () => {
   const [step, setStep] = useState(1);
-  const { counter, increment, decrement } = props;
+  const counter = useSelector(state => state.counter);
+  const dispatch = useDispatch();
 
   const handleStep = (e) => setStep(parseInt(e.target.value));
   return (
     <>
       <label htmlFor='step'>Set Step Size - </label>
-      <input id="step" type='number' onChange={handleStep} value={step} />
+      <input id='step' type='number' onChange={handleStep} value={step} />
 
-      <br/><br/>
+      <br /><br />
       <div>Counter App</div>
       <div>Count: {counter}</div>
-      <button onClick={() => increment(step)}>Increment</button>
-      <button onClick={() => decrement(step)}>Decrement</button>
+      <button onClick={() => dispatch(incrementAsyncAction(step))}>Increment</button>
+      <button onClick={() => dispatch(decrementAction(step))}>Decrement</button>
     </>
   );
-};
-Counter.propTypes = {
-  counter: number.isRequired,
-  increment: func.isRequired,
-  decrement: func.isRequired,
 };
 
 export default Counter;

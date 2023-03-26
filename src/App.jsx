@@ -1,11 +1,11 @@
 import React from 'react';
-import CounterContainer from './Container/CounterContainer';
+import Counter from './components/Counter';
 
 const App = () => {
   return (
     <>
       <div>Hello!!!</div>
-      <CounterContainer />
+      <Counter />
     </>
   );
 };
