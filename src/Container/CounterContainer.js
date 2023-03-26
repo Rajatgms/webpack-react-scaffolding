@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    increment: (step) => incrementAsyncAction(dispatch, step),
+    increment: (step) => dispatch(incrementAsyncAction(step)),
     decrement: (step) => dispatch(decrementAction(step)),
   };
 };

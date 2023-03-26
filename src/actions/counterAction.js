@@ -14,15 +14,20 @@ const decrementAction = (payload) => {
 };
 
 // Dispatch Async Actions
-const incrementAsyncAction = (dispatch, payload) => {
-  setTimeout(() => {
-    dispatch(incrementAction(payload));
-  }, 1000);
+// Thunk figure out whether object or dispatch function is return
+const incrementAsyncAction = (payload) => {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(incrementAction(payload));
+    }, 1000);
+  };
 };
 
-const decrementAsyncAction = (dispatch, payload) => {
-  setTimeout(() => {
-    dispatch(decrementAction(payload));
-  });
+const decrementAsyncAction = (payload) => {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(decrementAction(payload));
+    });
+  };
 };
 export { incrementAction, decrementAction, incrementAsyncAction, decrementAsyncAction };
